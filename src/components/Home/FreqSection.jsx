@@ -21,7 +21,7 @@ const faqs = [
   },
 ];
 
-export default function FaqSection() {
+export default function FreqSection() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleFAQ = (index) => {
