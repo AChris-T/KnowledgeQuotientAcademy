@@ -82,7 +82,12 @@ export default function Navbar() {
           >
             <MenuIcon />
           </motion.div>
-
+          <motion.img
+            src="/images/KQA3.png"
+            alt="logo"
+            className="w-[200px] mr-20 object-cover hidden md:flex"
+            whileHover={{ scale: 1.05 }}
+          />
           {/* Desktop Links */}
           <motion.div
             className="hidden md:flex md:gap-3 lg:gap-6 items-center"
@@ -105,12 +110,6 @@ export default function Navbar() {
           </motion.div>
 
           {/* Logo (Desktop) */}
-          <motion.img
-            src="/images/KQA3.png"
-            alt="logo"
-            className="w-[200px] mr-20 object-cover hidden md:flex"
-            whileHover={{ scale: 1.05 }}
-          />
 
           {/* Logo (Mobile) */}
           <motion.img
