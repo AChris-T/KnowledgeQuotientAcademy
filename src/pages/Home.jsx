@@ -4,7 +4,7 @@ import HomeService from '../components/Home/HomeEvents';
 import AboutSection from '../components/Home/AboutSection';
 import PhotoGallery from '../components/Home/PhotoGallery';
 import TeachersSection from '../components/Home/TeachersSection';
-import FAQSection from '../components/Home/FaqSection';
+import FaqSection from '../components/Home/FaqSection';
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
         <HomeService />
         <TeachersSection />
         <PhotoGallery />
-        <FAQSection />
+        <FaqSection />
       </div>
     </div>
   );
