@@ -84,27 +84,23 @@ export default function HomeService() {
                 custom={i}
                 src={src}
                 alt={`Event ${i + 1}`}
-                className="w-full h-58 object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-500"
+                className="w-full h-58 hidden md:block object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-500"
                 variants={imageVariants}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1. }}
                 whileTap={{ scale: 0.98 }}
               />
             ))}
           </div>
 
           <div className="flex flex-col w-full gap-2">
-            {['/images/event2.jpg', '/images/event3.jpg'].map((src, i) => (
-              <motion.img
-                key={i}
-                custom={i + 2}
-                src={src}
-                alt={`Event ${i + 3}`}
-                className="w-full h-58 object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-500"
-                variants={imageVariants}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              />
-            ))}
+            <motion.img
+              src={'/images/Flyer.jpg'}
+              alt="upcomingEvents"
+              className="w-full h-full object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-500"
+              variants={imageVariants}
+              whileHover={{ scale: 1 }}
+              whileTap={{ scale: 0.98 }}
+            />
           </div>
         </motion.div>
       </div>

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { LineIcon, LocationIcon, ShineIcon, StoneIcon } from '../../icons';
+import { LocationIcon } from '../../icons';
 import TestimonialCarousel from './Testimonial';
 
 export default function HeroSection() {
@@ -10,90 +10,118 @@ export default function HeroSection() {
     visible: (i = 0) => ({
       opacity: 1,
       y: 0,
-      transition: {
-        delay: i * 0.15,
-        duration: 0.6,
-        ease: 'easeOut',
-      },
+      transition: { delay: i * 0.15, duration: 0.6, ease: 'easeOut' },
     }),
   };
 
-  const imageVariants = {
-    hidden: { opacity: 0, x: 50, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      scale: 1,
-      transition: { duration: 0.8, ease: 'easeOut' },
-    },
-  };
+  const slides = [
+    { src: '/images/ih.jpg' },
+    { src: '/images/gallery/5.jpg' },
+    { src: '/images/gallery/7.jpg' },
+    { src: '/images/gallery/14.jpg' },
+    { src: '/images/gallery/13.jpg' },
+  ];
+
+  const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [slides.length, isPaused]);
+
+  const prevSlide = () =>
+    setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
 
   return (
-    <div className="py-10 md:py-20 flex items-center font-outfit flex-col lg:flex-row gap-10 container overflow-hidden">
-      {/* LEFT SECTION */}
+    <div
+      className="relative w-full h-[580px] md:h-[700px] overflow-hidden "
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Background Carousel */}
+      <div
+        className="flex h-full transition-transform duration-700 ease-in-out"
+        style={{ transform: `translateX(-${current * 100}%)` }}
+      >
+        {slides.map((slide, index) => (
+          <div key={index} className="min-w-full h-full relative">
+            <img
+              src={slide.src}
+              alt={`Slide ${index + 1}`}
+              className="w-full h-full object-cover object-center"
+            />
+            {/* Dark Overlay for readability */}
+            <div className="absolute inset-0 bg-black/50"></div>
+          </div>
+        ))}
+      </div>
+
+      {/* Text & Content Overlay */}
       <motion.div
-        className="flex items-center z-20 lg:items-start text-[#212529] md:flex-1 flex-col"
+        className="absolute inset-0 z-20 flex flex-col items-center  justify-center px-6 md:px-20 text-white font-outfit"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
         <motion.p
-          className="flex items-center gap-2 mb-4"
+          className="flex items-center gap-2 mb-1 text-sm md:text-base"
           variants={textVariants}
           custom={0}
         >
           <LocationIcon />
           St Joseph, Eugene, Oregon, USA
         </motion.p>
-
-        <motion.h3
-          className="text-4xl md:text-6xl font-bold"
-          variants={textVariants}
-          custom={1}
-        >
-          Where learning
-        </motion.h3>
-        <motion.h3
-          className="text-4xl md:text-6xl font-bold"
-          variants={textVariants}
-          custom={2}
-        >
-          meets innovation
-        </motion.h3>
-        <motion.h3
-          className="text-4xl md:text-6xl font-bold"
-          variants={textVariants}
-          custom={3}
-        >
-          and excellence.
-        </motion.h3>
+        <div className="flex flex-col items-center">
+          <motion.h3
+            className="text-3xl md:text-6xl font-bold leading-tight"
+            variants={textVariants}
+            custom={1}
+          >
+            Where learning
+          </motion.h3>
+          <motion.h3
+            className="text-3xl md:text-7xl md:-mt-4 font-bold leading-tight"
+            variants={textVariants}
+            custom={2}
+          >
+            meets innovation
+          </motion.h3>
+          <motion.h3
+            className="text-3xl md:text-7xl md:-mt-4 font-bold leading-tight"
+            variants={textVariants}
+            custom={3}
+          >
+            and excellence.
+          </motion.h3>
+        </div>
 
         <motion.p
-          className="text-[#5c5757] text-center lg:text-start md:text-base text-xs mb-2 mt-4 font-medium max-w-lg"
+          className="text-gray-200 text-center md:text-base text-sm max-w-xl mt-4"
           variants={textVariants}
           custom={4}
         >
           We are dedicated to shaping bright minds through quality education,
           personalized tutoring, and hands-on tech training. Whether you’re a
-          young learner, a secondary school student, or a professional seeking
-          to advance your skills — we’ve got you covered.
+          young learner, a student, or a professional seeking to advance your
+          skills — we’ve got you covered.
         </motion.p>
 
-        <motion.div variants={textVariants} custom={5}>
-          <TestimonialCarousel />
-        </motion.div>
-
+        {/* Buttons */}
         <motion.div
-          className="flex gap-3 mt-6"
+          className="flex gap-4 mt-6"
           variants={textVariants}
-          custom={6}
+          custom={5}
         >
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="relative px-6 py-3 bg-green-100 text-white rounded-md font-medium 
-              overflow-hidden transition-all duration-300 ease-out 
-              hover:bg-green-700 hover:shadow-lg"
+            className="px-6 py-3 cursor-pointer bg-green-100 text-white rounded-md font-medium 
+              transition-all duration-300 hover:bg-green-100 shadow-md"
           >
             Explore Programs
           </motion.button>
@@ -101,53 +129,54 @@ export default function HeroSection() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="relative px-6 py-3 border-2 border-green-100 text-green-100 rounded-md font-medium 
-              transition-all duration-300 ease-out hover:bg-green-100 hover:text-white 
-              hover:shadow-lg"
+            className="px-6 py-3 cursor-pointer text-green-100 bg-white rounded-md font-medium 
+              transition-all duration-300 hover:bg-green-100 hover:text-white shadow-md"
           >
             Join Now
           </motion.button>
         </motion.div>
+
+        {/* Carousel under hero (Testimonials) */}
+        <motion.div
+          className="mt-8 w-full md:w-[60%] flex items-center"
+          variants={textVariants}
+          custom={6}
+        >
+          <TestimonialCarousel />
+        </motion.div>
       </motion.div>
 
-      {/* RIGHT SECTION */}
-      <motion.div
-        className="md:flex-1 relative"
-        initial="hidden"
-        whileInView="visible"
-        variants={imageVariants}
-        viewport={{ once: true }}
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-5 top-1/2 -translate-y-1/2 bg-black/40 text-white 
+        w-10 h-10 rounded-full hidden md:flex justify-center items-center 
+        hover:bg-black/70 transition-all duration-300 hover:scale-110"
       >
-        <div className="absolute hidden md:block -left-4 top-0">
-          <LineIcon />
-        </div>
+        ❮
+      </button>
 
-        <div className="relative">
-          <motion.img
-            src="/images/ih.jpg"
-            alt="Hero"
-            className="w-full h-full relative z-10 rounded-lg shadow-md"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.4 }}
+      <button
+        onClick={nextSlide}
+        className="absolute right-5 top-1/2 -translate-y-1/2 bg-black/40 text-white 
+        w-10 h-10 rounded-full hidden md:flex justify-center items-center 
+        hover:bg-black/70 transition-all duration-300 hover:scale-110"
+      >
+        ❯
+      </button>
+
+      {/* Slide Indicators */}
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
+        {slides.map((_, i) => (
+          <div
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-300 hover:scale-125 ${
+              i === current ? 'bg-white shadow-md' : 'bg-gray-400'
+            }`}
           />
-
-          <motion.div
-            className="absolute z-10 -top-4 left-0"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
-          >
-            <StoneIcon />
-          </motion.div>
-
-          <motion.div
-            className="absolute z-10 -bottom-2 right-0 hidden md:block"
-            animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
-          >
-            <ShineIcon />
-          </motion.div>
-        </div>
-      </motion.div>
+        ))}
+      </div>
     </div>
   );
 }

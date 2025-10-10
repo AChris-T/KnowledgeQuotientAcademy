@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
@@ -21,19 +22,19 @@ const images = [
 export default function PhotoGallery() {
   return (
     <motion.div
-      className="my-20 container mx-auto font-outfit"
+      className="md:my-20 my-10 container mx-auto font-outfit"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
       viewport={{ once: true }}
     >
       <motion.h2
-        className="text-center text-3xl md:text-5xl font-bold mb-10 text-deepblack-100"
+        className="md:text-center text-2xl md:text-4xl font-bold mb-4 md:mb-8  text-deepblack-100"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        Photo <span className="text-green-100">Gallery</span>
+        Photo Gallery
       </motion.h2>
 
       <Swiper

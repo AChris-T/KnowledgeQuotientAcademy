@@ -108,7 +108,7 @@ export default function Navbar() {
           <motion.img
             src="/images/KQA3.png"
             alt="logo"
-            className="w-[200px] object-cover hidden md:flex"
+            className="w-[200px] mr-20 object-cover hidden md:flex"
             whileHover={{ scale: 1.05 }}
           />
 
@@ -124,7 +124,7 @@ export default function Navbar() {
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <NavLink
               to="/contact"
-              className="bg-green-100 text-white p-3 md:px-6 md:py-3 rounded-xl text-sm md:text-base transition-all hover:bg-green-200"
+              className="bg-green-100 text-white  p-3 md:px-6 md:py-3 rounded-xl text-sm md:text-base transition-all hover:bg-green-200"
             >
               Contact Us
             </NavLink>

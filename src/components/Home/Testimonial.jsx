@@ -50,7 +50,7 @@ export default function TestimonialCarousel() {
   }, [index]);
 
   return (
-    <div className="relative w-full max-w-2xl mx-auto mt-2  group flex items-start  transition-all">
+    <div className="relative w-full max-w-2xl mx-auto mt-2   group flex items-start justify-center  transition-all">
       {/* Arrows */}
       <button
         onClick={prevSlide}
@@ -59,19 +59,19 @@ export default function TestimonialCarousel() {
         <ArrowLeftIcon />
       </button>
 
-      <div className="flex items-center gap-4 text-center">
+      <div className="flex items-center flex-col gap-4 text-center">
         <img
           src={testimonials[index].image}
           alt={testimonials[index].name}
           className="w-12 h-12 rounded-full object-cover"
         />
-        <div className="text-left">
-          <p className="text-gray-700 text-sm italic mb-1">
+        <div className="text-center">
+          <p className="text-white- text-sm italic mb-1">
             {testimonials[index].text}
           </p>
-          <p className="font-semibold text-sm text-gray-900">
+          <p className="font-semibold text-sm text-white">
             {testimonials[index].name}{' '}
-            <span className="text-gray-500 text-xs">
+            <span className="text-white text-xs">
               ({testimonials[index].role})
             </span>
           </p>
