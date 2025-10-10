@@ -93,19 +93,25 @@ export default function Footer() {
           <h4 className="text-lg font-semibold mb-3 text-white">Follow Us</h4>
           <div className="flex items-center gap-4">
             <a
-              href="#"
+              href="https://www.facebook.com/profile.php?id=61554216120411&mibextid=ZbWKwL"
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-2 bg-amber-100/20 rounded-full   transition-all duration-300"
             >
               <FacebookIcon />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/knowledge_quotient_academy?igsh=MTA3ZW9iejNvdG9tNg=="
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-2 bg-amber-100/20 rounded-full   transition-all duration-300"
             >
               <InstegarmIcon />
             </a>
             <a
-              href="#"
+              href="https://www.youtube.com/@Knowledgequotientacademy"
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-2 bg-amber-100/20 rounded-full transition-all duration-300"
             >
               <YoutubeIcon />

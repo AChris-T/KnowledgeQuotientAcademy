@@ -481,3 +481,97 @@ export const PhoneIcon = () => {
     </svg>
   );
 };
+export const InnovationIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-10 h-10 text-green-100"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth="1.8"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M9 17a3 3 0 0 0 6 0v-1.5a3.5 3.5 0 1 0-6 0V17zM12 3a6 6 0 0 1 6 6c0 2.577-1.705 4.764-4 5.657V16a2 2 0 1 1-4 0v-1.343C7.705 13.764 6 11.577 6 9a6 6 0 0 1 6-6z"
+      />
+    </svg>
+  );
+};
+
+export const ExcellenceIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-10 h-10 text-green-100"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth="1.8"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 17l-3.5 2 1-4L6 11l4.5-.5L12 7l1.5 3.5L18 11l-3.5 4 1 4z"
+      />
+    </svg>
+  );
+};
+
+export const IntegrityIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-10 h-10 text-green-100"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth="1.8"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+      />
+    </svg>
+  );
+};
+
+export const ExpertIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-10 h-10 text-green-100"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth="1.8"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M5 13l4 4L19 7M4 20h16"
+      />
+    </svg>
+  );
+};
+
+export const CollaboartionIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-10 h-10 text-green-100"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth="1.8"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M17 20h5v-2a4 4 0 0 0-3-3.87M9 20H4v-2a4 4 0 0 1 3-3.87M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
+      />
+    </svg>
+  );
+};
