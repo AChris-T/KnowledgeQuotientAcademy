@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import {
   FacebookIcon,
   InstegarmIcon,
+  Linkedin,
   LocationIcon,
   MailIcon,
   PhoneIcon,
@@ -115,6 +116,14 @@ export default function Footer() {
               className="p-2 bg-amber-100/20 rounded-full transition-all duration-300"
             >
               <YoutubeIcon />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/knowledge-quotient-academy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 bg-amber-100/20 rounded-full transition-all duration-300"
+            >
+              <Linkedin />
             </a>
           </div>
         </div>

@@ -37,7 +37,7 @@ export default function FreqSection() {
       viewport={{ once: true }}
     >
       <motion.h2
-        className="text-center text-3xl md:text-5xl font-bold mb-10 text-deepblack-100"
+        className="text-center text-2xl md:text-4xl font-bold mb-10 text-deepblack-100"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
