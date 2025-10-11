@@ -85,7 +85,7 @@ export default function Navbar() {
           <motion.img
             src="/images/KQA3.png"
             alt="logo"
-            className="w-[200px] mr-20 object-cover hidden md:flex"
+            className="w-[150px]  object-cover hidden md:flex"
             whileHover={{ scale: 1.05 }}
           />
           {/* Desktop Links */}
