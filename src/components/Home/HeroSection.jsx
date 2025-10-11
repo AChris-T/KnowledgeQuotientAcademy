@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { LocationIcon } from '../../icons';
 import TestimonialCarousel from './Testimonial';
+import { NavLink } from 'react-router-dom';
 
 export default function HeroSection() {
   const textVariants = {
@@ -68,14 +69,6 @@ export default function HeroSection() {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <motion.p
-          className="flex items-center gap-2 mb-1 text-sm md:text-base"
-          variants={textVariants}
-          custom={0}
-        >
-          <LocationIcon />
-          St Joseph, Eugene, Oregon, USA
-        </motion.p>
         <div className="flex flex-col items-center">
           <motion.h3
             className="text-3xl md:text-6xl font-bold leading-tight"
@@ -123,17 +116,20 @@ export default function HeroSection() {
             className="px-6 py-3 cursor-pointer bg-green-100 text-white rounded-md font-medium 
               transition-all duration-300 hover:bg-green-100 shadow-md"
           >
-            Explore Programs
+            <NavLink to={'/programs'}>Explore Programs</NavLink>
           </motion.button>
 
-          <motion.button
+          <motion.a
+            href="https://wa.me/+2348163988707"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-6 py-3 cursor-pointer text-green-100 bg-white rounded-md font-medium 
-              transition-all duration-300 hover:bg-green-100 hover:text-white shadow-md"
+              transition-all duration-300 hover:bg-green-100 hover:text-white shadow-md inline-block text-center"
           >
             Join Now
-          </motion.button>
+          </motion.a>
         </motion.div>
 
         {/* Carousel under hero (Testimonials) */}

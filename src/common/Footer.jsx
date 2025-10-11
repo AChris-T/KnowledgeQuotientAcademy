@@ -55,10 +55,10 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                to="/events"
+                to="/gallery"
                 className="hover:text-amber-200 transition-colors duration-300"
               >
-                Events
+                Gallery
               </Link>
             </li>
             <li>
@@ -76,15 +76,21 @@ export default function Footer() {
         <div>
           <h4 className="text-lg font-semibold mb-3 text-white">Contact Us</h4>
           <ul className="text-gray-300 text-sm space-y-2">
-            <li className="flex items-center gap-2">
-              <LocationIcon /> St Joseph, Eugene, Oregon, USA
+            <li className="flex items-start gap-2">
+              <div>
+                <LocationIcon />
+              </div>
+              Abiodun komolafe street off Fasheun, Ago palace way, Okota, Idolo
+              Lago Nigeria{' '}
             </li>
             <li className="flex items-center gap-2">
-              <MailIcon />
-              info@kqacademy.com
+              <div>
+                <MailIcon />
+              </div>
+              knowledgequotientacademy@gmail.com
             </li>
             <li className="flex items-center gap-2">
-              <PhoneIcon /> +1 (234) 456-7890
+              <PhoneIcon /> +2348163988707
             </li>
           </ul>
         </div>
