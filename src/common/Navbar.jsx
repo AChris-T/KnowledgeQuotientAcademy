@@ -15,7 +15,7 @@ export default function Navbar() {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Programs', path: '/programs' },
-    { name: 'Services', path: '/services' },
+    { name: 'Gallery', path: '/gallery' },
   ];
 
   // Scroll behavior: show/hide navbar

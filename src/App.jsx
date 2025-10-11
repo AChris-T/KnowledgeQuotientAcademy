@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Footer from './common/Footer';
 import Programs from './pages/Programs';
+import Gallery from './pages/Gallery';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/programs" element={<Programs />} />
+        <Route path="/gallery" element={<Gallery />} />
       </Routes>
       <Footer />
     </div>
