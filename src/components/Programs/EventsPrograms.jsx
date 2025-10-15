@@ -52,7 +52,7 @@ export default function EventVideos() {
           ))}
         </motion.div>
       </div>
-      <div className="">
+      <div className=" text-center md:text-start">
         <motion.h2
           className="text-2xl md:text-4xl font-bold mb-4"
           initial={{ opacity: 0, y: 40 }}
@@ -62,15 +62,45 @@ export default function EventVideos() {
         >
           Upcoming Events
         </motion.h2>
-        <motion.img
-          src="/images/Flyer.jpg"
-          alt="Online School"
-          className="mx-auto md:mx-0 max-w-[900px] h-[420px] object-cover rounded-2xl shadow-xl"
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        />
+        <div className="flex flex-wrap space-y-10 w-full justify-between">
+          {' '}
+          <motion.img
+            src="/images/Flyer.jpg"
+            alt="Online School"
+            className="mx-auto md:mx-0 max-w-[900px] h-[420px] object-cover rounded-2xl shadow-xl"
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          />
+          <motion.img
+            src="/images/FB2.jpg"
+            alt="Online School"
+            className="mx-auto md:mx-0 max-w-[900px] h-[420px] object-cover rounded-2xl shadow-xl"
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          />
+          <motion.img
+            src="/images/FB1.jpg"
+            alt="Online School"
+            className="mx-auto md:mx-0 max-w-[400px] h-[420px] object-cover rounded-2xl shadow-xl"
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          />
+          <motion.img
+            src="/images/FB3.jpg"
+            alt="Online School"
+            className="mx-auto md:mx-0 max-w-[900px] h-[420px] object-cover rounded-2xl shadow-xl"
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          />
+        </div>
       </div>
     </section>
   );
