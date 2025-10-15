@@ -54,13 +54,17 @@ export default function ImpactSection() {
               </motion.div>
             ))}
           </div>
-
-          <Link
-            to="/contact"
-            className="inline-block mt-10 px-8 py-3 bg-green-100 text-white rounded-full font-medium hover:bg-green-700 transition-all duration-300"
-          >
-            Partner With Us
-          </Link>
+          <div className="my-10 flex ">
+            <button
+              type="button"
+              className="relative px-6 py-3 cursor-pointer bg-green-100 text-white rounded-md font-medium   transition-all duration-300 ease-out"
+              onClick={() => {
+                if (window.openPartnerModal) window.openPartnerModal();
+              }}
+            >
+              Partner with us
+            </button>
+          </div>
         </motion.div>
       </div>
     </section>

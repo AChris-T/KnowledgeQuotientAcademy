@@ -86,7 +86,7 @@ export default function HomeService() {
                 alt={`Event ${i + 1}`}
                 className="w-full h-58 hidden md:block object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-500"
                 variants={imageVariants}
-                whileHover={{ scale: 1. }}
+                whileHover={{ scale: 1 }}
                 whileTap={{ scale: 0.98 }}
               />
             ))}
@@ -114,11 +114,14 @@ export default function HomeService() {
         viewport={{ once: true }}
       >
         <motion.button
-          className="relative px-6 py-3 bg-green-100 text-white rounded-md font-medium 
+          className="relative px-6 cursor-pointer py-3 bg-green-100 text-white rounded-md font-medium 
                overflow-hidden transition-all duration-300 ease-out 
-               hover:bg-green-700 hover:scale-105 hover:shadow-lg"
+                hover:scale-105 hover:shadow-lg"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => {
+            if (window.openRegistrationModal) window.openRegistrationModal();
+          }}
         >
           Join Now
         </motion.button>

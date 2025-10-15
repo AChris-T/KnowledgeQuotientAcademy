@@ -104,6 +104,7 @@ export default function HeroSection() {
             className="relative px-6 py-3 border-2 border-green-100 text-green-100 rounded-md font-medium 
               transition-all duration-300 ease-out hover:bg-green-100 hover:text-white 
               hover:shadow-lg"
+            onClick={() => { if (window.openRegistrationModal) window.openRegistrationModal(); }}
           >
             Join Now
           </motion.button>

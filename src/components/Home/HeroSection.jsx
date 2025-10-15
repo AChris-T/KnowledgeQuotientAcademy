@@ -120,13 +120,11 @@ export default function HeroSection() {
           </motion.button>
 
           <motion.a
-            href="https://wa.me/+2348163988707"
-            target="_blank"
-            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-6 py-3 cursor-pointer text-green-100 bg-white rounded-md font-medium 
               transition-all duration-300 hover:bg-green-100 hover:text-white shadow-md inline-block text-center"
+            onClick={(e) => { e.preventDefault(); if (window.openRegistrationModal) window.openRegistrationModal(); }}
           >
             Join Now
           </motion.a>

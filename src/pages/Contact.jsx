@@ -4,6 +4,22 @@ import { motion } from 'framer-motion';
 import { LocationIcon, PhoneIcon, EmailIcon } from '../icons';
 
 export default function Contact() {
+  const formRef = React.useRef(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = formRef.current;
+    if (!form) return;
+    const fd = new FormData(form);
+    const payload = Object.fromEntries(fd.entries());
+    console.log('Contact message submission:', payload);
+    form.reset();
+    window.dispatchEvent(
+      new CustomEvent('app:toast', {
+        detail: { message: 'Message sent successfully', type: 'success' },
+      })
+    );
+  };
   return (
     <div className="mt-28 mb-20 px-4 lg:px-10">
       <motion.div
@@ -34,7 +50,7 @@ export default function Contact() {
             <h2 className="text-2xl font-semibold mb-6 text-green-100">
               Send Us a Message
             </h2>
-            <form className="space-y-5">
+            <form className="space-y-5" ref={formRef} onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label
@@ -46,6 +62,7 @@ export default function Contact() {
                   <input
                     type="text"
                     id="firstName"
+                    name="firstName"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-100 focus:border-transparent outline-none transition"
                     placeholder="Your first name"
                   />
@@ -60,6 +77,7 @@ export default function Contact() {
                   <input
                     type="text"
                     id="lastName"
+                    name="lastName"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-100 focus:border-transparent outline-none transition"
                     placeholder="Your last name"
                   />
@@ -76,6 +94,7 @@ export default function Contact() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-100 focus:border-transparent outline-none transition"
                   placeholder="Your email address"
                 />
@@ -91,6 +110,7 @@ export default function Contact() {
                 <input
                   type="tel"
                   id="phone"
+                  name="phone"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-100 focus:border-transparent outline-none transition"
                   placeholder="Your phone number"
                 />
@@ -106,6 +126,7 @@ export default function Contact() {
                 <input
                   type="text"
                   id="subject"
+                  name="subject"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-100 focus:border-transparent outline-none transition"
                   placeholder="Message subject"
                 />
@@ -121,6 +142,7 @@ export default function Contact() {
                 <textarea
                   id="message"
                   rows="5"
+                  name="message"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-100 focus:border-transparent outline-none transition"
                   placeholder="Your message"
                 ></textarea>
@@ -128,7 +150,7 @@ export default function Contact() {
 
               <motion.button
                 type="submit"
-                className="w-full bg-green-100 text-white py-3 px-6 rounded-lg font-medium hover:bg-green-200 transition-colors"
+                className="w-full bg-green-100 text-white py-3 px-6 rounded-lg font-medium  transition-colors"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -158,7 +180,7 @@ export default function Contact() {
                     <h3 className="font-medium text-gray-900">Address</h3>
                     <p className="text-gray-600 mt-1">
                       {' '}
-                      Abiodun komolafe street off Fasheun, Ago palace way,
+                      No 5, Abiodun komolafe street off Fasheun, Ago palace way,
                       Okota, Idolo Lago Nigeria{' '}
                     </p>
                   </div>

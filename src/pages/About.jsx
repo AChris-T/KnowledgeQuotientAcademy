@@ -18,6 +18,7 @@ export default function About() {
       <div className="px-4 lg:px-10">
         <Staffs />
         <ImpactSection />
+        
       </div>
     </div>
   );

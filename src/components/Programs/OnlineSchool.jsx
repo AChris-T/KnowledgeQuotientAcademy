@@ -52,12 +52,18 @@ export default function OnlineSchool() {
           </ul>
 
           {/* CTA Button */}
-          <Link
-            to="/online-school"
-            className="inline-block mt-4 px-8 py-3 bg-green-100 text-white font-medium rounded-xl shadow-md hover:bg-green-700 hover:shadow-lg transition-all duration-300"
+          <motion.button
+            className="relative px-6 cursor-pointer py-3 bg-green-100 text-white rounded-md font-medium 
+                         overflow-hidden transition-all duration-300 ease-out 
+                          hover:scale-105 hover:shadow-lg"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              if (window.openRegistrationModal) window.openRegistrationModal();
+            }}
           >
             Join Online School
-          </Link>
+          </motion.button>
         </motion.div>
       </div>
     </section>
