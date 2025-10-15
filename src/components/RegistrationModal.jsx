@@ -98,7 +98,14 @@ export default function RegistrationModal() {
     setUnder18(false);
     setStep(0);
     setShowToast(false);
-    window.dispatchEvent(new CustomEvent('app:toast', { detail: { message: 'Registration submitted successfully', type: 'success' } }));
+    window.dispatchEvent(
+      new CustomEvent('app:toast', {
+        detail: {
+          message: 'Registration submitted successfully',
+          type: 'success',
+        },
+      })
+    );
     setOpen(false);
   };
 
@@ -106,7 +113,9 @@ export default function RegistrationModal() {
 
   const goNext = () => {
     if (!formRef.current) return;
-    const sectionEl = formRef.current.querySelector(`[data-step="${currentKey}"]`);
+    const sectionEl = formRef.current.querySelector(
+      `[data-step="${currentKey}"]`
+    );
     if (sectionEl) {
       const invalid = sectionEl.querySelector(':invalid');
       if (invalid) {
@@ -122,24 +131,55 @@ export default function RegistrationModal() {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center">
+    <div className="fixed  inset-0 z-[9999] flex items-center justify-center">
       <div className="absolute inset-0 bg-black/50" />
-      <div className="relative z-10 w-[96%] md:w-[900px] max-h-[92vh] overflow-hidden rounded-xl bg-white p-0 shadow-2xl">
-        <div className="sticky top-0 bg-white border-b px-6 py-4 flex items-center justify-between rounded-t-xl">
+      <div className="relative z-10 w-[96%] md:w-[900px] max-h-[92vh]  overflow-hidden mb-20 rounded-xl bg-white p-0 shadow-2xl">
+        <div className="sticky top-0 bg-white border-b px-6 py-4  flex items-center justify-between rounded-t-xl">
           <div>
-            <h2 className="text-xl md:text-2xl font-semibold">Knowledge Quotient Academy – Program Registration</h2>
-            <p className="text-sm text-gray-600">Empowering Minds, Shaping the Future</p>
+            <h2 className="text-xl md:text-2xl font-semibold">
+              Knowledge Quotient Academy – Program Registration
+            </h2>
+            <p className="text-sm text-gray-600">
+              Empowering Minds, Shaping the Future
+            </p>
           </div>
-          <button onClick={() => setOpen(false)} className="h-9 w-9 rounded-full hover:bg-gray-100 grid place-items-center text-gray-600">✕</button>
+          <button
+            onClick={() => setOpen(false)}
+            className="h-9 w-9 rounded-full hover:bg-gray-100 grid place-items-center text-gray-600"
+          >
+            ✕
+          </button>
         </div>
 
         <div className="px-6 pt-4">
           <div className="flex items-center gap-2">
             {steps.map((label, idx) => (
               <div key={label} className="flex items-center gap-2">
-                <div className={`h-9 w-9 rounded-full grid place-items-center text-sm font-semibold ${idx <= step ? 'bg-green-100 text-white' : 'bg-gray-200 text-gray-600'}`}>{idx + 1}</div>
-                <span className={`hidden md:block text-sm ${idx === step ? 'text-green-100 font-semibold' : 'text-gray-600'}`}>{label}</span>
-                {idx < steps.length - 1 && <div className={`h-1 w-8 md:w-16 rounded ${idx < step ? 'bg-green-100' : 'bg-gray-200'}`}></div>}
+                <div
+                  className={`h-9 w-9 rounded-full grid place-items-center text-sm font-semibold ${
+                    idx <= step
+                      ? 'bg-green-100 text-white'
+                      : 'bg-gray-200 text-gray-600'
+                  }`}
+                >
+                  {idx + 1}
+                </div>
+                <span
+                  className={`hidden md:block text-sm ${
+                    idx === step
+                      ? 'text-green-100 font-semibold'
+                      : 'text-gray-600'
+                  }`}
+                >
+                  {label}
+                </span>
+                {idx < steps.length - 1 && (
+                  <div
+                    className={`h-1 w-8 md:w-16 rounded ${
+                      idx < step ? 'bg-green-100' : 'bg-gray-200'
+                    }`}
+                  ></div>
+                )}
               </div>
             ))}
           </div>
@@ -148,64 +188,111 @@ export default function RegistrationModal() {
         {showToast && (
           <div className="pointer-events-none absolute right-4 top-4 z-[10000]">
             <div className="pointer-events-auto flex items-center gap-2 rounded-md bg-green-100 text-white px-4 py-2 shadow-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1 14-4-4 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 7z"/>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="h-5 w-5"
+              >
+                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1 14-4-4 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 7z" />
               </svg>
-              <span className="text-sm font-medium">Registration submitted successfully</span>
+              <span className="text-sm font-medium">
+                Registration submitted successfully
+              </span>
             </div>
           </div>
         )}
 
-        <form ref={formRef} onSubmit={handleSubmit} className="px-6 pb-6 pt-4 space-y-8 overflow-y-auto max-h-[calc(92vh-120px)]">
-          <section className={`space-y-4 ${currentKey === 'Personal' ? '' : 'hidden'}`} data-step="Personal">
-            <h3 className="text-base font-semibold">SECTION A: PERSONAL INFORMATION</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <form
+          ref={formRef}
+          onSubmit={handleSubmit}
+          className="px-6 pb-6 pt-4 space-y-8 overflow-y-auto max-h-[calc(92vh-120px)]"
+        >
+          <section
+            className={`space-y-4 ${currentKey === 'Personal' ? '' : 'hidden'}`}
+            data-step="Personal"
+          >
+            <h3 className="text-base font-semibold">
+              SECTION A: PERSONAL INFORMATION
+            </h3>
+            <div className="grid w-full grid-cols-1 md:grid-cols-2 gap-4">
               <label className="flex flex-col text-sm">
                 Full Name
-                <input name="fullName" required className="mt-1 rounded border p-2" />
+                <input
+                  type="text"
+                  name="fullName"
+                  required
+                  className="mt-1 h-[40px] w-full rounded border p-2"
+                />
               </label>
-              <label className="flex flex-col text-sm">
+              <label className="flex flex-col text-sm ">
                 Date of Birth
-                <div className="relative mt-1">
-                  <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-                      <path d="M7 2a1 1 0 0 1 1 1v1h8V3a1 1 0 1 1 2 0v1h1a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1V3a1 1 0 1 1 2 0v1zm13 6H4v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8zM5 7h14V6H5v1z"/>
-                    </svg>
-                  </span>
-                  <input type="date" name="dob" required className="w-full rounded border p-2 pl-10" />
-                </div>
+                <input
+                  type="date"
+                  name="dob"
+                  className="mt-1 h-[40px] w-[95%] md:w-full rounded border p-2"
+                />
               </label>
               <label className="flex flex-col text-sm">
                 Gender
-                <select name="gender" required className="mt-1 rounded border p-2">
-                  <option value="" disabled>Select gender</option>
+                <select
+                  name="gender"
+                  required
+                  className="mt-1  h-[40px] rounded border p-2"
+                >
+                  <option value="" disabled>
+                    Select gender
+                  </option>
                   <option>Male</option>
                   <option>Female</option>
                 </select>
               </label>
               <label className="flex flex-col text-sm">
                 Phone Number (WhatsApp)
-                <input name="phone" required className="mt-1 rounded border p-2" />
+                <input
+                  name="phone"
+                  required
+                  className="mt-1  h-[40px] rounded border p-2"
+                />
               </label>
               <label className="flex flex-col text-sm">
                 Email Address
-                <input type="email" name="email" required className="mt-1 rounded border p-2" />
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  className="mt-1  h-[40px] rounded border p-2"
+                />
               </label>
               <label className="flex flex-col text-sm md:col-span-2">
                 Address
-                <input name="address" required className="mt-1 rounded border p-2" />
+                <input
+                  name="address"
+                  required
+                  className="mt-1  h-[40px] rounded border p-2"
+                />
               </label>
               <label className="flex flex-col text-sm">
                 State of Residence
-                <input name="state" className="mt-1 rounded border p-2" />
+                <input
+                  name="state"
+                  className="mt-1  h-[40px] rounded border p-2"
+                />
               </label>
               <label className="flex flex-col text-sm">
                 Nationality
-                <input name="nationality" className="mt-1 rounded border p-2" />
+                <input
+                  name="nationality"
+                  className="mt-1  h-[40px] rounded border p-2"
+                />
               </label>
               <label className="flex flex-col text-sm md:col-span-2">
                 Are you under 18?
-                <select value={under18 ? 'Yes' : 'No'} onChange={(e) => setUnder18(e.target.value === 'Yes')} className="mt-1 rounded border p-2">
+                <select
+                  value={under18 ? 'Yes' : 'No'}
+                  onChange={(e) => setUnder18(e.target.value === 'Yes')}
+                  className="mt-1  h-[40px] rounded border p-2"
+                >
                   <option>No</option>
                   <option>Yes</option>
                 </select>
@@ -214,45 +301,80 @@ export default function RegistrationModal() {
           </section>
 
           {under18 && (
-            <section className={`space-y-4 ${currentKey === 'Guardian' ? '' : 'hidden'}`} data-step="Guardian">
-              <h3 className="text-base font-semibold">SECTION B: GUARDIAN / SPONSOR INFORMATION</h3>
+            <section
+              className={`space-y-4 ${
+                currentKey === 'Guardian' ? '' : 'hidden'
+              }`}
+              data-step="Guardian"
+            >
+              <h3 className="text-base font-semibold">
+                SECTION B: GUARDIAN / SPONSOR INFORMATION
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label className="flex flex-col text-sm">
                   Full Name
-                  <input name="guardianFullName" className="mt-1 rounded border p-2" />
+                  <input
+                    name="guardianFullName"
+                    className="mt-1  h-[40px] rounded border p-2"
+                  />
                 </label>
                 <label className="flex flex-col text-sm">
                   Phone Number
-                  <input name="guardianPhone" className="mt-1 rounded border p-2" />
+                  <input
+                    name="guardianPhone"
+                    className="mt-1  h-[40px] rounded border p-2"
+                  />
                 </label>
                 <label className="flex flex-col text-sm">
                   Relationship to Applicant
-                  <input name="guardianRelationship" className="mt-1 rounded border p-2" />
+                  <input
+                    name="guardianRelationship"
+                    className="mt-1 rounded border p-2"
+                  />
                 </label>
                 <label className="flex flex-col text-sm">
                   Occupation
-                  <input name="guardianOccupation" className="mt-1 rounded border p-2" />
+                  <input
+                    name="guardianOccupation"
+                    className="mt-1 rounded border p-2"
+                  />
                 </label>
               </div>
             </section>
           )}
 
-          <section className={`space-y-4 ${currentKey === 'Program' ? '' : 'hidden'}`} data-step="Program">
-            <h3 className="text-base font-semibold">SECTION C: PROGRAM CATEGORY</h3>
+          <section
+            className={`space-y-4 ${currentKey === 'Program' ? '' : 'hidden'}`}
+            data-step="Program"
+          >
+            <h3 className="text-base font-semibold">
+              SECTION C: PROGRAM CATEGORY
+            </h3>
             <div className="grid grid-cols-1 gap-4">
               <label className="flex flex-col text-sm">
                 Select Category
-                <select value={section} onChange={handleSectionChange} required className="mt-1 rounded border p-2">
-                  <option value="" disabled>Select a section</option>
+                <select
+                  value={section}
+                  onChange={handleSectionChange}
+                  required
+                  className="mt-1  h-[40px] rounded border p-2"
+                >
+                  <option value="" disabled>
+                    Select a section
+                  </option>
                   {Object.keys(subprogramMap).map((sec) => (
-                    <option key={sec} value={sec}>{sec}</option>
+                    <option key={sec} value={sec}>
+                      {sec}
+                    </option>
                   ))}
                 </select>
               </label>
 
               {section && (
                 <div className="flex flex-col text-sm">
-                  <span className="mb-1 font-medium">Choose Programs (you can select multiple)</span>
+                  <span className="mb-1 font-medium">
+                    Choose Programs (you can select multiple)
+                  </span>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2 border rounded p-3">
                     {subprogramMap[section].map((sp) => (
                       <label key={sp} className="flex items-center gap-2">
@@ -270,13 +392,26 @@ export default function RegistrationModal() {
             </div>
           </section>
 
-          <section className={`space-y-4 ${currentKey === 'Additional' ? '' : 'hidden'}`} data-step="Additional">
-            <h3 className="text-base font-semibold">SECTION D: ADDITIONAL DETAILS</h3>
+          <section
+            className={`space-y-4 ${
+              currentKey === 'Additional' ? '' : 'hidden'
+            }`}
+            data-step="Additional"
+          >
+            <h3 className="text-base font-semibold">
+              SECTION D: ADDITIONAL DETAILS
+            </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
               <label className="flex flex-col">
                 Preferred Learning Mode
-                <select name="learningMode" required className="mt-1 rounded border p-2">
-                  <option value="" disabled>Select mode</option>
+                <select
+                  name="learningMode"
+                  required
+                  className="mt-1  h-[40px] rounded border p-2"
+                >
+                  <option value="" disabled>
+                    Select mode
+                  </option>
                   <option>Online</option>
                   <option>Physical</option>
                   <option>Hybrid</option>
@@ -284,8 +419,14 @@ export default function RegistrationModal() {
               </label>
               <label className="flex flex-col">
                 Preferred Class Schedule
-                <select name="schedule" required className="mt-1 rounded border p-2">
-                  <option value="" disabled>Select schedule</option>
+                <select
+                  name="schedule"
+                  required
+                  className="mt-1  h-[40px] rounded border p-2"
+                >
+                  <option value="" disabled>
+                    Select schedule
+                  </option>
                   <option>Weekdays</option>
                   <option>Weekends</option>
                   <option>Flexible</option>
@@ -293,8 +434,16 @@ export default function RegistrationModal() {
               </label>
               <label className="flex flex-col md:col-span-2">
                 How did you hear about us?
-                <select name="referral" value={referral} onChange={(e) => setReferral(e.target.value)} required className="mt-1 rounded border p-2">
-                  <option value="" disabled>Select one</option>
+                <select
+                  name="referral"
+                  value={referral}
+                  onChange={(e) => setReferral(e.target.value)}
+                  required
+                  className="mt-1  h-[40px] rounded border p-2"
+                >
+                  <option value="" disabled>
+                    Select one
+                  </option>
                   <option>Social Media</option>
                   <option>Friend</option>
                   <option>School</option>
@@ -305,41 +454,79 @@ export default function RegistrationModal() {
               {referral === 'Other' && (
                 <label className="flex flex-col md:col-span-2">
                   Please specify
-                  <input name="referralOther" className="mt-1 rounded border p-2" />
+                  <input
+                    name="referralOther"
+                    className="mt-1 rounded border p-2"
+                  />
                 </label>
               )}
             </div>
           </section>
 
-          <section className={`space-y-4 ${currentKey === 'Declaration' ? '' : 'hidden'}`} data-step="Declaration">
+          <section
+            className={`space-y-4 ${
+              currentKey === 'Declaration' ? '' : 'hidden'
+            }`}
+            data-step="Declaration"
+          >
             <h3 className="text-base font-semibold">SECTION E: DECLARATION</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
               <label className="flex flex-col">
                 Signature (type your full name)
-                <input name="signature" required className="mt-1 rounded border p-2" />
+                <input
+                  name="signature"
+                  required
+                  className="mt-1  h-[40px] rounded border p-2"
+                />
               </label>
               <label className="flex flex-col">
                 Date
                 <div className="relative mt-1">
-                  <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-                      <path d="M7 2a1 1 0 0 1 1 1v1h8V3a1 1 0 1 1 2 0v1h1a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1V3a1 1 0 1 1 2 0v1zm13 6H4v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8zM5 7h14V6H5v1z"/>
-                    </svg>
-                  </span>
-                  <input type="date" name="date" required className="w-full rounded border p-2 pl-10" />
+                  <input
+                    type="date"
+                    name="date"
+                    required
+                    className="w-[95%] md:w-full h-[40px] rounded border p-2 pl-10"
+                  />
                 </div>
               </label>
             </div>
           </section>
 
-          <div className="flex items-center justify-between gap-3 pt-2">
-            <button type="button" onClick={() => setOpen(false)} className="px-4 py-2 rounded border">Close</button>
+          <div className="flex items-center justify-between gap-3 pt-2 pb-10">
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              className="px-4 py-2 rounded border"
+            >
+              Close
+            </button>
             <div className="flex items-center gap-2">
-              <button type="button" disabled={step === 0} onClick={goPrev} className={`px-4 py-2 rounded border ${step === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}>Back</button>
+              <button
+                type="button"
+                disabled={step === 0}
+                onClick={goPrev}
+                className={`px-4 py-2 rounded border ${
+                  step === 0 ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
+              >
+                Back
+              </button>
               {currentKey !== 'Declaration' ? (
-                <button type="button" onClick={goNext} className="px-4 py-2 rounded bg-green-100 text-white hover:opacity-90">Next</button>
+                <button
+                  type="button"
+                  onClick={goNext}
+                  className="px-4 py-2 rounded bg-green-100 text-white hover:opacity-90"
+                >
+                  Next
+                </button>
               ) : (
-                <button type="submit" className="px-4 py-2 rounded bg-green-100 text-white hover:opacity-90">Submit</button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 rounded bg-green-100 text-white hover:opacity-90"
+                >
+                  Submit
+                </button>
               )}
             </div>
           </div>
