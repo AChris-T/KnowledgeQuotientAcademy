@@ -15,6 +15,7 @@ export default function Navbar() {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Programs', path: '/programs' },
+    { name: 'Career', path: '/career' },
     { name: 'Gallery', path: '/gallery' },
   ];
 
@@ -75,19 +76,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto flex flex-col py-3 px-4 md:px-10">
         <div className="font-medium flex items-center justify-between w-full gap-6 text-lg font-outfit">
           {/* Mobile Menu Icon */}
-          <motion.div
-            whileTap={{ scale: 0.9 }}
-            className="flex md:hidden cursor-pointer z-20"
-            onClick={toggleMenu}
-          >
-            <MenuIcon />
-          </motion.div>
+
           <motion.img
             src="/images/KQA3.png"
             alt="logo"
             className="w-[150px]  object-cover hidden md:flex"
             whileHover={{ scale: 1.05 }}
           />
+
           {/* Desktop Links */}
           <motion.div
             className="hidden md:flex md:gap-3 lg:gap-6 items-center"
@@ -108,19 +104,11 @@ export default function Navbar() {
               </motion.div>
             ))}
           </motion.div>
-
-          {/* Logo (Desktop) */}
-
-          {/* Logo (Mobile) */}
-          <motion.img
-            src="/images/KQA.png"
-            alt="logo"
-            className="w-[70px] flex md:hidden ml-6"
+          <motion.div
             whileHover={{ scale: 1.05 }}
-          />
-
-          {/* Contact Button */}
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            whileTap={{ scale: 0.95 }}
+            className="hidden md:flex "
+          >
             <NavLink
               to="/contact"
               className="bg-green-100 text-white  p-3 md:px-6 md:py-3 rounded-xl text-sm md:text-base transition-all "
@@ -128,13 +116,31 @@ export default function Navbar() {
               Contact Us
             </NavLink>
           </motion.div>
+          {/* Logo (Desktop) */}
+
+          {/* Logo (Mobile) */}
+          <motion.img
+            src="/images/KQA.png"
+            alt="logo"
+            className="w-[70px] flex md:hidden "
+            whileHover={{ scale: 1.05 }}
+          />
+          <motion.div
+            whileTap={{ scale: 0.9 }}
+            className="flex md:hidden cursor-pointer  z-20"
+            onClick={toggleMenu}
+          >
+            <MenuIcon />
+          </motion.div>
+
+          {/* Contact Button */}
         </div>
 
         {/* Mobile Menu */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              className="md:hidden fixed top-20 left-0 right-0 bg-white shadow-lg z-40 px-5 py-4"
+              className="md:hidden fixed w-full top-20 left-0 right-0 bg-white shadow-lg z-40 px-5 py-4"
               initial="closed"
               animate="open"
               exit="closed"
@@ -165,6 +171,18 @@ export default function Navbar() {
                     </NavLink>
                   </motion.div>
                 ))}
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="mt-5 w-full mb-2"
+              >
+                <NavLink
+                  to="/contact"
+                  className="text-white flex items-center bg-green-100 justify-center py-2 hover:text-green-100"
+                >
+                  Contact Us
+                </NavLink>
               </motion.div>
             </motion.div>
           )}

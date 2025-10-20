@@ -7,9 +7,9 @@ export default function DirectorSection() {
       <div className="container mx-auto px-4 md:px-10  grid md:grid-cols-2 gap-10 items-center">
         <div className="flex justify-center items-center">
           <motion.img
-            src="/tutors/director.jpg"
+            src="/images/PW2.jpg"
             alt="Director"
-            className=" object-cover w-[500px] h-[550px] rounded-2xl"
+            className=" object-cover w-[500px] h-[450px] rounded-2xl"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}

@@ -7,6 +7,7 @@ import Footer from './common/Footer';
 import Programs from './pages/Programs';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
+import Career from './pages/Career';
 import ScrollToTop from './common/ScrollToTop';
 import RegistrationModal from './components/RegistrationModal';
 import ToastHost from './common/ToastHost';
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/programs" element={<Programs />} />
+        <Route path="/career" element={<Career />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
@@ -54,3 +56,4 @@ export default function App() {
     </div>
   );
 }
+
