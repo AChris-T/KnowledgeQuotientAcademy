@@ -81,7 +81,7 @@ export default function PersonalInfoSection() {
             id="dob"
             name="dob"
             type="date"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-100 focus:border-transparent outline-none transition"
+            className="w-full h-[40px] px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-100 focus:border-transparent outline-none transition"
           />
         </div>
         <div>

@@ -164,9 +164,9 @@ export default function RegistrationModal() {
   if (!open) return null;
 
   return (
-    <div className="fixed  inset-0 z-[9999] flex items-center justify-center">
+    <div className="fixed   inset-0 z-[9999] flex items-center justify-center">
       <div className="absolute inset-0 bg-black/50" />
-      <div className="relative z-10 w-[96%] md:w-[900px] max-h-[92vh]  overflow-hidden mb-20 rounded-xl bg-white p-0 shadow-2xl">
+      <div className="relative z-10 w-[96%] md:w-[900px] max-h-[82vh]  overflow-hidden my-20 rounded-xl bg-white p-0 shadow-2xl">
         <div className="sticky top-0 bg-white border-b px-6 py-4  flex items-center justify-between rounded-t-xl">
           <div>
             <h2 className="text-xl md:text-2xl font-semibold">
@@ -526,7 +526,7 @@ export default function RegistrationModal() {
             </div>
           </section>
 
-          <div className="flex items-center justify-between gap-3 pt-2 pb-10">
+          <div className="flex mb-20 items-center justify-between gap-3 pt-2 pb-10">
             <button
               type="button"
               onClick={() => setOpen(false)}
