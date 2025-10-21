@@ -84,29 +84,62 @@ export default function RegistrationModal() {
     );
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const payload = Object.fromEntries(formData.entries());
-    payload.section = section;
-    payload.subPrograms = subPrograms;
-    console.log('Registration submission:', payload);
-    if (formRef.current) formRef.current.reset();
-    setSection('');
-    setSubPrograms([]);
-    setReferral('');
-    setUnder18(false);
-    setStep(0);
-    setShowToast(false);
-    window.dispatchEvent(
-      new CustomEvent('app:toast', {
-        detail: {
-          message: 'Registration submitted successfully',
-          type: 'success',
-        },
-      })
-    );
-    setOpen(false);
+    const formEl = e.currentTarget;
+    const fd = new FormData(formEl);
+    // Include derived fields
+    fd.append('section', section);
+    subPrograms.forEach((sp) => fd.append('subPrograms', sp));
+    fd.append('formName', 'registration');
+
+    try {
+      const res = await fetch('https://formspree.io/f/xldpkpgn', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: fd,
+      });
+
+      if (res.ok) {
+        const preview = Object.fromEntries(fd.entries());
+        console.log('Registration submitted to Formspree:', preview);
+        if (formRef.current) formRef.current.reset();
+        setSection('');
+        setSubPrograms([]);
+        setReferral('');
+        setUnder18(false);
+        setStep(0);
+        setShowToast(false);
+        window.dispatchEvent(
+          new CustomEvent('app:toast', {
+            detail: {
+              message: 'Registration submitted successfully',
+              type: 'success',
+            },
+          })
+        );
+        setOpen(false);
+      } else {
+        window.dispatchEvent(
+          new CustomEvent('app:toast', {
+            detail: {
+              message: 'Failed to submit registration',
+              type: 'error',
+            },
+          })
+        );
+      }
+    } catch (err) {
+      window.dispatchEvent(
+        new CustomEvent('app:toast', {
+          detail: {
+            message: 'Network error. Please try again.',
+            type: 'error',
+            err,
+          },
+        })
+      );
+    }
   };
 
   const currentKey = steps[step];

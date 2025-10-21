@@ -3,7 +3,6 @@ import React from 'react';
 export default function PartnerModal() {
   const [open, setOpen] = React.useState(false);
   const formRef = React.useRef(null);
-  const [files, setFiles] = React.useState([]);
 
   React.useEffect(() => {
     window.openPartnerModal = () => setOpen(true);
@@ -12,27 +11,53 @@ export default function PartnerModal() {
     };
   }, []);
 
-  const handleFileChange = (e) => {
-    const list = Array.from(e.target.files || []);
-    setFiles(list);
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = formRef.current;
     if (!form) return;
     const fd = new FormData(form);
-    const payload = Object.fromEntries(fd.entries());
-    payload.files = files.map((f) => ({ name: f.name, size: f.size, type: f.type }));
-    console.log('Partnership submission:', payload);
-    form.reset();
-    setFiles([]);
-    window.dispatchEvent(
-      new CustomEvent('app:toast', {
-        detail: { message: 'Partnership request submitted successfully', type: 'success' },
-      })
-    );
-    setOpen(false);
+    fd.append('formName', 'partner');
+
+    try {
+      const res = await fetch('https://formspree.io/f/xdkwvwea', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: fd,
+      });
+      if (res.ok) {
+        const preview = Object.fromEntries(fd.entries());
+        console.log('Partnership request submitted to Formspree:', preview);
+        form.reset();
+        window.dispatchEvent(
+          new CustomEvent('app:toast', {
+            detail: {
+              message: 'Partnership request submitted successfully',
+              type: 'success',
+            },
+          })
+        );
+        setOpen(false);
+      } else {
+        window.dispatchEvent(
+          new CustomEvent('app:toast', {
+            detail: {
+              message: 'Failed to submit partnership request',
+              type: 'error',
+            },
+          })
+        );
+      }
+    } catch (err) {
+      window.dispatchEvent(
+        new CustomEvent('app:toast', {
+          detail: {
+            message: 'Network error. Please try again.',
+            type: 'error',
+            err,
+          },
+        })
+      );
+    }
   };
 
   if (!open) return null;
@@ -141,28 +166,6 @@ export default function PartnerModal() {
                 placeholder="Tell us about your partnership idea..."
               ></textarea>
             </label>
-            <div className="text-sm">
-              <p className="font-medium mb-1">
-                Attach Files (PDF, DOCX, or Images)
-              </p>
-              <input
-                type="file"
-                name="attachments"
-                multiple
-                onChange={handleFileChange}
-                accept=".pdf,.doc,.docx,image/*"
-                className="block w-full rounded border p-2"
-              />
-              {files.length > 0 && (
-                <ul className="mt-2 list-disc pl-5 text-gray-700">
-                  {files.map((f) => (
-                    <li key={f.name} className="break-all">
-                      {f.name} ({Math.round(f.size / 1024)} KB)
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
           </section>
 
           <div className="flex justify-end gap-3">

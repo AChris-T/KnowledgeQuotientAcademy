@@ -7,7 +7,6 @@ import EducationSection from '../components/career/EducationSection';
 import WorkExperienceSection from '../components/career/WorkExperienceSection';
 import SkillsSection from '../components/career/SkillsSection';
 import MotivationSection from '../components/career/MotivationSection';
-import UploadsSection from '../components/career/UploadsSection';
 import DeclarationSection from '../components/career/DeclarationSection';
 import SidePanel from '../components/career/SidePanel';
 
@@ -23,44 +22,59 @@ export default function Career() {
   const handlePositionToggle = (key) =>
     setPositions((p) => ({ ...p, [key]: !p[key] }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = formRef.current;
     if (!form) return;
 
     const fd = new FormData(form);
+    fd.append('formName', 'career');
 
-    const employmentTypes = fd.getAll('employmentTypes');
-    const positionApplyingFor = fd.getAll('positionApplyingFor');
+    try {
+      const res = await fetch('https://formspree.io/f/xldpkpen', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: fd,
+      });
 
-    const payload = Object.fromEntries(fd.entries());
-
-    // Attach arrays explicitly
-    payload.employmentTypes = employmentTypes;
-    payload.positionApplyingFor = positionApplyingFor;
-
-    // Files -> names preview (avoid logging huge File objects)
-    const cv = fd.get('cv');
-    const passport = fd.get('passport');
-    const certificates = fd.getAll('certificates');
-
-    payload.cv = cv && cv.name ? cv.name : null;
-    payload.passport = passport && passport.name ? passport.name : null;
-    payload.certificates = certificates
-      .filter(Boolean)
-      .map((f) => (f && f.name ? f.name : null))
-      .filter(Boolean);
-
-    console.log('Career application submission:', payload);
-
-    form.reset();
-    setPositions({ tutor: false, coding: false, admin: false, other: false });
-
-    window.dispatchEvent(
-      new CustomEvent('app:toast', {
-        detail: { message: 'Application submitted successfully', type: 'success' },
-      })
-    );
+      if (res.ok) {
+        const simplePreview = Object.fromEntries(fd.entries());
+        console.log(
+          'Career application submitted to Formspree:',
+          simplePreview
+        );
+        form.reset();
+        setPositions({
+          tutor: false,
+          coding: false,
+          admin: false,
+          other: false,
+        });
+        window.dispatchEvent(
+          new CustomEvent('app:toast', {
+            detail: {
+              message: 'Application submitted successfully',
+              type: 'success',
+            },
+          })
+        );
+      } else {
+        window.dispatchEvent(
+          new CustomEvent('app:toast', {
+            detail: { message: 'Failed to submit application', type: 'error' },
+          })
+        );
+      }
+    } catch (err) {
+      window.dispatchEvent(
+        new CustomEvent('app:toast', {
+          detail: {
+            message: 'Network error. Please try again.',
+            type: 'error',
+          },
+        })
+      );
+    }
   };
 
   return (
@@ -77,8 +91,8 @@ export default function Career() {
             Career Application
           </h1>
           <p className="text-gray-600 max-w-3xl mx-auto mt-3">
-            Join our mission to inspire learning. Complete the form below and we’ll
-            get back to you.
+            Join our mission to inspire learning. Complete the form below and
+            we’ll get back to you.
           </p>
         </div>
 
@@ -96,7 +110,10 @@ export default function Career() {
             <PersonalInfoSection />
 
             {/* Section 2: Position & Availability */}
-            <PositionAvailabilitySection positions={positions} onToggle={handlePositionToggle} />
+            <PositionAvailabilitySection
+              positions={positions}
+              onToggle={handlePositionToggle}
+            />
 
             {/* Section 3: Education Background */}
             <EducationSection />
@@ -109,9 +126,6 @@ export default function Career() {
 
             {/* Section 6: Motivation */}
             <MotivationSection />
-
-            {/* Section 7: Upload Documents */}
-            <UploadsSection />
 
             {/* Section 8: Declaration */}
             <DeclarationSection />

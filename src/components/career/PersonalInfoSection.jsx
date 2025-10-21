@@ -9,14 +9,14 @@ export default function PersonalInfoSection() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
           <label
-            htmlFor="fullName"
+            htmlFor="full_name"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
             Full Name
           </label>
           <input
-            id="fullName"
-            name="fullName"
+            id="full_name"
+            name="full_name"
             type="text"
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-100 focus:border-transparent outline-none transition"
             placeholder="Your full name"

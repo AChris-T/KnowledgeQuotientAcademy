@@ -6,19 +6,41 @@ import { LocationIcon, PhoneIcon, EmailIcon } from '../icons';
 export default function Contact() {
   const formRef = React.useRef(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = formRef.current;
     if (!form) return;
     const fd = new FormData(form);
-    const payload = Object.fromEntries(fd.entries());
-    console.log('Contact message submission:', payload);
-    form.reset();
-    window.dispatchEvent(
-      new CustomEvent('app:toast', {
-        detail: { message: 'Message sent successfully', type: 'success' },
-      })
-    );
+    fd.append('formName', 'contact');
+    try {
+      const res = await fetch('https://formspree.io/f/xgvnqqnw', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: fd,
+      });
+      if (res.ok) {
+        const payload = Object.fromEntries(fd.entries());
+        console.log('Contact message submitted to Formspree:', payload);
+        form.reset();
+        window.dispatchEvent(
+          new CustomEvent('app:toast', {
+            detail: { message: 'Message sent successfully', type: 'success' },
+          })
+        );
+      } else {
+        window.dispatchEvent(
+          new CustomEvent('app:toast', {
+            detail: { message: 'Failed to send message', type: 'error' },
+          })
+        );
+      }
+    } catch (err) {
+      window.dispatchEvent(
+        new CustomEvent('app:toast', {
+          detail: { message: 'Network error. Please try again.', type: 'error' },
+        })
+      );
+    }
   };
   return (
     <div className="mt-28 mb-20 px-4 lg:px-10">
