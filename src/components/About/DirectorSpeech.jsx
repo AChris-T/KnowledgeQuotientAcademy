@@ -23,7 +23,7 @@ export default function DirectorSection() {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl font-bold text-deepblack-100 mb-4">
-            Meet Our Director
+            Director's Speech
           </h2>
           <p className="text-gray-700 leading-relaxed mb-4">
             Welcome to Knowledge Quotient Academy, a place where learning is
