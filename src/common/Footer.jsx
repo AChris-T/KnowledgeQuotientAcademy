@@ -89,7 +89,7 @@ export default function Footer() {
                 <LocationIcon />
               </div>
               No 5, Abiodun komolafe street off Fasheun, Ago palace way, Okota,
-              Idolo Lago Nigeria{' '}
+              Idolo ,Lagos, Nigeria.{' '}
             </li>
             <li className="flex items-center gap-2">
               <div>
