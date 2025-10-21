@@ -13,7 +13,7 @@ export default function Contact() {
     const fd = new FormData(form);
     fd.append('formName', 'contact');
     try {
-      const res = await fetch('https://formspree.io/f/xgvnqqnw', {
+      const res = await fetch('https://formspree.io/f/xanpzlyw', {
         method: 'POST',
         headers: { Accept: 'application/json' },
         body: fd,
@@ -37,7 +37,10 @@ export default function Contact() {
     } catch (err) {
       window.dispatchEvent(
         new CustomEvent('app:toast', {
-          detail: { message: 'Network error. Please try again.', type: 'error' },
+          detail: {
+            message: 'Network error. Please try again.',
+            type: 'error',
+          },
         })
       );
     }
@@ -217,7 +220,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-medium text-gray-900">Phone</h3>
-                    <p className="text-gray-600 mt-1">+2348163988707</p>
+                    <p className="text-gray-600 mt-1">08132481912</p>
                   </div>
                 </div>
 
@@ -227,9 +230,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-medium text-gray-900">Email</h3>
-                    <p className="text-gray-600 mt-1">
-                      knowledgequotientacademy@gmail.com
-                    </p>
+                    <p className="text-gray-600 mt-1">info@kqacademy.com</p>
                   </div>
                 </div>
               </div>

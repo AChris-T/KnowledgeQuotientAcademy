@@ -7,36 +7,24 @@ import { ArrowLeftIcon, ArrowRightIcon } from '../../icons';
 const events = [
   {
     id: 'coding-bootcamp',
-    title: 'Coding Bootcamp',
-    desc: 'Students learning React.js in a hands-on session',
+    title: 'Precious corner university',
+    desc: ' Students learning and collaborating at Precious corner university ',
     cover: '/images/gallery/1.jpg',
-    images: [
-      '/images/gallery/1.jpg',
-      '/images/gallery/2.jpg',
-      '/images/gallery/3.jpg',
-    ],
+    images: ['/images/gallery/1.jpg', '/images/gallery/2.jpg'],
   },
   {
     id: 'ai-workshop',
-    title: 'AI Workshop',
+    title: 'Emzor Pharmaceutical company training',
     desc: 'Participants exploring real-world AI applications',
-    cover: '/images/gallery/2.jpg',
-    images: [
-      '/images/gallery/2.jpg',
-      '/images/gallery/4.jpg',
-      '/images/gallery/6.jpg',
-    ],
+    cover: '/images/gallery/3.jpg',
+    images: ['/images/gallery/3.jpg', '/pic/F.jpg', '/pic/w.jpeg'],
   },
   {
     id: 'graduation-ceremony',
-    title: 'Graduation Ceremony',
-    desc: 'Celebrating our talented graduates',
+    title: 'American corner Ikeja ',
+    desc: 'Training our Students for the future',
     cover: '/images/gallery/6.jpg',
-    images: [
-      '/images/gallery/6.jpg',
-      '/images/gallery/5.jpg',
-      '/images/gallery/3.jpg',
-    ],
+    images: ['/images/gallery/6.jpg', '/images/gallery/5.jpg'],
   },
 ];
 

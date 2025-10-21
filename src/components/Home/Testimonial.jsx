@@ -6,26 +6,15 @@ const testimonials = [
     id: 1,
     name: 'Dennis Barrett',
     role: 'Student',
-    image:
-      'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHx8MA%3D%3D', // replace with your image
-    text: `"Creating product become fun conviction. For every delay in they extremity."`,
+    image: '/testimonials/test3.jpg',
+    text: `"Knowledge Quotient Academy is simply the best! They have experienced and dedicated tutors, and my son has greatly benefited from their programs. Thank you!"`,
   },
   {
     id: 2,
     name: 'Sophia Lane',
     role: 'Designer',
-    image:
-      'https://mitwpu.edu.in/uploads/course/images/BDes-User-experience-mob.webp',
-    text: `"This platform made learning exciting and collaborative."`,
-  },
-  {
-    id: 3,
-    name: 'James Carter',
-    role: 'Developer',
-    image:
-      'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHx8MA%3D%3D', // replace with your image
-
-    text: `"A truly inspiring and creative environment for innovation."`,
+    image: '/testimonials/test4.jpg',
+    text: `"This is an outstanding institution driving technological innovation and shaping a bright future for children."`,
   },
 ];
 

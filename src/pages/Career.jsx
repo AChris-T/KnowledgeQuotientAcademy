@@ -31,7 +31,7 @@ export default function Career() {
     fd.append('formName', 'career');
 
     try {
-      const res = await fetch('https://formspree.io/f/xldpkpen', {
+      const res = await fetch('https://formspree.io/f/myznabyk', {
         method: 'POST',
         headers: { Accept: 'application/json' },
         body: fd,
@@ -132,7 +132,7 @@ export default function Career() {
 
             <motion.button
               type="submit"
-              className="w-full bg-green-100 text-white py-3 px-6 rounded-lg font-medium transition-colors"
+              className="w-full cursor-pointer bg-green-100 text-white py-3 px-6 rounded-lg font-medium transition-colors"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >

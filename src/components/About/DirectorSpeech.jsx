@@ -26,16 +26,17 @@ export default function DirectorSection() {
             Meet Our Director
           </h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Our Director is a visionary educator and technologist passionate
-            about merging academic excellence with innovation. With years of
-            experience in education and digital transformation, they lead the
-            Academy’s mission to empower learners across Africa and beyond.
+            Welcome to Knowledge Quotient Academy, a place where learning is
+            redefined and potential is unlocked. At KQA, we believe every
+            learner deserves the right guidance, tools, and environment to
+            thrive. Our mission is to build confident thinkers, problem solvers,
+            and future innovators through quality teaching and practical,
+            tech-driven learning. We are dedicated to excellence, integrity, and
+            genuine results that speak for themselves. With us, education goes
+            beyond textbooks, it’s about preparing minds for the challenges and
+            opportunities of tomorrow.
           </p>
-          <p className="text-gray-700">
-            Under their leadership, KQA has trained thousands of students in
-            Robotics, AI, and emerging technologies, fostering creativity and
-            future readiness.
-          </p>
+          <h3 className="font-bold text-black text-lg">Felix Dickson</h3>
         </motion.div>
       </div>
     </section>

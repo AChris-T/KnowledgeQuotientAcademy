@@ -63,6 +63,14 @@ export default function Footer() {
             </li>
             <li>
               <Link
+                to="/Career"
+                className="hover:text-amber-200 transition-colors duration-300"
+              >
+                Career
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/contact"
                 className="hover:text-amber-200 transition-colors duration-300"
               >
@@ -80,17 +88,17 @@ export default function Footer() {
               <div>
                 <LocationIcon />
               </div>
-             No 5, Abiodun komolafe street off Fasheun, Ago palace way, Okota, Idolo
-              Lago Nigeria{' '}
+              No 5, Abiodun komolafe street off Fasheun, Ago palace way, Okota,
+              Idolo Lago Nigeria{' '}
             </li>
             <li className="flex items-center gap-2">
               <div>
                 <MailIcon />
               </div>
-              knowledgequotientacademy@gmail.com
+              info@kqacademy.com
             </li>
             <li className="flex items-center gap-2">
-              <PhoneIcon /> +2348163988707
+              <PhoneIcon /> 08132481912
             </li>
           </ul>
         </div>

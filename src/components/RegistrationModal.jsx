@@ -94,7 +94,7 @@ export default function RegistrationModal() {
     fd.append('formName', 'registration');
 
     try {
-      const res = await fetch('https://formspree.io/f/xldpkpgn', {
+      const res = await fetch('https://formspree.io/f/xldpkord', {
         method: 'POST',
         headers: { Accept: 'application/json' },
         body: fd,

@@ -19,7 +19,7 @@ export default function PartnerModal() {
     fd.append('formName', 'partner');
 
     try {
-      const res = await fetch('https://formspree.io/f/xdkwvwea', {
+      const res = await fetch('https://formspree.io/f/xpwyeoaj', {
         method: 'POST',
         headers: { Accept: 'application/json' },
         body: fd,
@@ -156,7 +156,7 @@ export default function PartnerModal() {
           </section>
 
           <section className="space-y-4">
-            <h3 className="text-base font-semibold">Proposal & Uploads</h3>
+            <h3 className="text-base font-semibold">Proposal </h3>
             <label className="flex flex-col text-sm">
               Brief Description
               <textarea
