@@ -80,7 +80,7 @@ export default function Navbar() {
           <motion.img
             src="/images/KQA3.png"
             alt="logo"
-            className="w-[150px]  object-cover hidden md:flex"
+            className="w-[150px]  object-cover flex"
             whileHover={{ scale: 1.05 }}
           />
 
@@ -119,12 +119,12 @@ export default function Navbar() {
           {/* Logo (Desktop) */}
 
           {/* Logo (Mobile) */}
-          <motion.img
+          {/*      <motion.img
             src="/images/KQA.png"
             alt="logo"
             className="w-[70px] flex md:hidden "
             whileHover={{ scale: 1.05 }}
-          />
+          /> */}
           <motion.div
             whileTap={{ scale: 0.9 }}
             className="flex md:hidden cursor-pointer  z-20"
