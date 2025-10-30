@@ -206,7 +206,7 @@ export default function Contact() {
                     <p className="text-gray-600 mt-1">
                       {' '}
                       No 5, Abiodun komolafe street off Fasheun, Ago palace way,
-                      Okota, Idolo Lago Nigeria{' '}
+                      Okota, Isolo Lagos Nigeria{' '}
                     </p>
                   </div>
                 </div>
