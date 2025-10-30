@@ -95,7 +95,7 @@ export default function Footer() {
               <div>
                 <MailIcon />
               </div>
-              info@kqacademy.com
+              info@kqacademy.ng
             </li>
             <li className="flex items-center gap-2">
               <PhoneIcon /> 08132481912

@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 
 const teachers = [
   {
-    name: 'Miss Blessing Uba',
+    name: 'Blessing Uba',
     role: 'Quality assurance manager',
     img: '/tutors/tutor.jpg',
   },
   {
-    name: 'Miss Mary Olalanlege',
+    name: 'Mary Olalanlege',
     role: 'Educator',
     img: '/tutors/tutor1.jpg',
   },
