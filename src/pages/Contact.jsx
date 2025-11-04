@@ -230,7 +230,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-medium text-gray-900">Email</h3>
-                    <p className="text-gray-600 mt-1">info@kqacademy.ng</p>
+                    <p className="text-gray-600 mt-1">infodesk@kqacademy.ng</p>
                   </div>
                 </div>
               </div>
