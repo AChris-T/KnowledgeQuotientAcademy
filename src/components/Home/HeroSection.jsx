@@ -126,7 +126,7 @@ export default function HeroSection() {
               transition-all duration-300 hover:bg-green-100 hover:text-white shadow-md inline-block text-center"
             onClick={(e) => { e.preventDefault(); if (window.openRegistrationModal) window.openRegistrationModal(); }}
           >
-            Join Now
+            Enroll
           </motion.a>
         </motion.div>
 
